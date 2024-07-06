@@ -1,0 +1,21 @@
+From 275d207370443fa52239b006425ceec111ffd098 Mon Sep 17 00:00:00 2001
+From: Ciaran O' Rourke <ciaranborourke-dev@proton.me>
+Date: Thu, 4 Jul 2024 00:19:52 -0700
+Subject: [PATCH 1/2] disable fetch content
+
+---
+ .../lite/tools/cmake/modules/OverridableFetchContent.cmake       | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tensorflow/lite/tools/cmake/modules/OverridableFetchContent.cmake b/tensorflow/lite/tools/cmake/modules/OverridableFetchContent.cmake
+index 5e26cb03..def0f6c8 100644
+--- a/tensorflow/lite/tools/cmake/modules/OverridableFetchContent.cmake
++++ b/tensorflow/lite/tools/cmake/modules/OverridableFetchContent.cmake
+@@ -251,6 +251,7 @@ function(OverridableFetchContent_Declare CONTENT_NAME)
+     URL_HASH
+     URL_MD5
+   )
++  message(FATAL_ERROR "OverridableFetchContent_Declare called by ${CONTENT_NAME}! Failing build.")
+   set(ALL_VALUE_ARGS LICENSE_FILE LICENSE_URL ${OVERRIDABLE_ARGS})
+   cmake_parse_arguments(ARGS
+     ""
